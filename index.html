@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>What's Blocking You — Tim Stevens</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Open+Sans:wght@300;400;600&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --red: #E41E3F;
-    --dark: #111111;
+    --red: #8DC63F;
+    --dark: #1A2B4A;
     --mid: #444444;
     --light: #888888;
     --border: #E5E5E5;
@@ -23,7 +23,7 @@
   html, body {
     min-height: 100%;
     background: var(--bg);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: var(--dark);
     -webkit-font-smoothing: antialiased;
   }
@@ -45,12 +45,12 @@
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--light);
+    color: #8DC63F;
     margin-bottom: 1rem;
   }
 
   .header h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 32px;
     font-weight: 700;
     line-height: 1.2;
@@ -143,7 +143,7 @@
   }
 
   .q-text {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 1.4;
@@ -235,7 +235,7 @@
     color: var(--white);
     border: none;
     border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
@@ -274,7 +274,7 @@
   }
 
   .results-header h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 28px;
     font-weight: 700;
     color: var(--dark);
@@ -296,7 +296,7 @@
 
   .primary-tag {
     display: inline-block;
-    background: var(--red);
+    background: #8DC63F;
     color: white;
     font-size: 11px;
     letter-spacing: 2px;
@@ -307,7 +307,7 @@
   }
 
   .primary-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 0.75rem;
@@ -400,7 +400,7 @@
   }
 
   .secondary-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -473,7 +473,7 @@
   }
 
   .closing-quote {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: italic;
     font-size: 18px;
     line-height: 1.6;
@@ -500,14 +500,48 @@
     color: var(--light);
     border: 0.5px solid var(--border);
     border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
     transition: all 0.15s;
   }
 
   .retake-btn:hover { background: var(--card); color: var(--dark); }
+
+  .download-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .download-btn:hover { background: #c41835; }
+
+  @media print {
+    body { background: white; }
+    .shell { max-width: 100%; padding: 0 2rem; }
+    #screen-intro, #screen-questions { display: none !important; }
+    #screen-results { display: block !important; }
+    .download-btn, .retake-btn { display: none !important; }
+    .closing-card { background: #111 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .primary-result { background: #111 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .breakdown-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .book-spine { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .primary-tag { background: #E41E3F !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
 
   .screen { display: none; }
   .screen.active { display: block; }
@@ -571,10 +605,16 @@
 
     <div class="closing-card">
       <p class="closing-quote">"You already know how to do this.<br><strong>Now you know what's in the way."</strong></p>
-      <p class="closing-name">Tim Stevens · Remember Who You Are</p>
+      <p class="closing-name">Tim Stevens · Rite Group Conference 2026 · Hamilton, NZ</p>
     </div>
 
-    <button class="retake-btn" onclick="retake()">Retake the assessment</button>
+    <button class="download-btn" onclick="downloadPDF()">⬇ Download my results</button>
+  <button class="retake-btn" onclick="retake()">Retake the assessment</button>
+
+  <div id="pdf-footer" style="display:none; text-align:center; padding: 2rem 0 1rem; border-top: 0.5px solid #E5E5E5; margin-top: 2rem;">
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:4px;">Tim Stevens · Remember Who You Are</p>
+    <p style="font-size:11px; color:#aaa;">Rite Group Conference 2026 · Hamilton, NZ</p>
+  </div>
   </div>
 
 </div>
@@ -900,6 +940,23 @@ function retake() {
   document.getElementById('screen-results').classList.remove('active');
   document.getElementById('screen-questions').classList.add('active');
   renderQuestion();
+}
+
+function downloadPDF() {
+  // Show footer for print
+  document.getElementById('pdf-footer').style.display = 'block';
+  
+  // Expand breakdown bars for print
+  document.querySelectorAll('.breakdown-fill').forEach(el => {
+    el.style.width = el.dataset.pct + '%';
+  });
+
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => {
+      document.getElementById('pdf-footer').style.display = 'none';
+    }, 1000);
+  }, 300);
 }
 </script>
 </body>
